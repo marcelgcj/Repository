@@ -1,0 +1,24 @@
+<h2>My Pokemons</h2>
+
+<label>Adicionar:
+    <input #addtreinadorname placeholder="Insira o nome">
+</label>
+<button (click)="add(addtreinadorname.value)">Adicionar</button>
+
+<ul class="pokemons">
+    <li *ngFor="let treina of treinador" [class.selected]="pokemon === selectedPokemon" (click)="onSelect(pokemon)">
+        <span class="badge">{{treina.id}}</span> {{treina.nome}}
+    </li>
+</ul>
+
+<div *ngIf="selectedPokemon">
+
+    <h2>{{selectedPokemon.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{selectedPokemon.id}}</div>
+    <div>
+        <label>name:
+      <input [(ngModel)]="selectedPokemon.name" placeholder="name">
+    </label>
+    </div>
+
+</div>
